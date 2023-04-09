@@ -48,6 +48,7 @@ export class ControlPanelController {
   height: number;
 
   isUsingExternalUI = false;
+  
 
   constructor () {
 
@@ -155,7 +156,7 @@ export class ControlPanelController {
       const x = i % 7
       const y = Math.floor(i / 7)
       return { 
-        x: width - 231 * scale + x * 33 * scale, 
+        x: width - 231 * scale + x * 33 * scale - (Settings.menuVisible ? 232 : 0), 
         y: height - 72 * scale + y * 36 * scale 
       }
     }
@@ -301,7 +302,7 @@ export class ControlPanelController {
     }else{
       // desktop compact
       return { 
-        x: width - 188 * scale, 
+        x: width - (188 * scale) - (Settings.menuVisible ? 232 : 0), 
         y: height - 72 * scale - 251 * scale
       };
     }
@@ -310,7 +311,6 @@ export class ControlPanelController {
   draw () {
     Viewport.viewport.context.fillStyle = '#000'
     const scale = this.getTabScale();
-
     
     
     if (this.selectedControl && this.selectedControl.draw) {
@@ -318,8 +318,9 @@ export class ControlPanelController {
       this.selectedControl.draw(this, position.x, position.y);
     }
 
-    let selectedPosition: TabPosition = null
 
+    let selectedPosition: TabPosition = null
+    
 
     this.controls.forEach((control, index) => {
       const tabPosition = this.tabPosition(index)
@@ -335,7 +336,7 @@ export class ControlPanelController {
 
       if (control.isAvailable === false){
         Viewport.viewport.context.fillStyle = '#00000099'
-        Viewport.viewport.context.fillRect(tabPosition.x, tabPosition.y, 33 * scale, 36 * scale)
+        Viewport.viewport.context.fillRect(tabPosition.x , tabPosition.y, 33 * scale, 36 * scale)
       }
 
       
