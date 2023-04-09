@@ -48,7 +48,6 @@ export class ControlPanelController {
   height: number;
 
   isUsingExternalUI = false;
-  
 
   constructor () {
 
@@ -312,6 +311,7 @@ export class ControlPanelController {
     Viewport.viewport.context.fillStyle = '#000'
     const scale = this.getTabScale();
     
+
     
     if (this.selectedControl && this.selectedControl.draw) {
       const position = this.controlPosition(this.selectedControl);
@@ -320,7 +320,6 @@ export class ControlPanelController {
 
 
     let selectedPosition: TabPosition = null
-    
 
     this.controls.forEach((control, index) => {
       const tabPosition = this.tabPosition(index)
@@ -336,7 +335,7 @@ export class ControlPanelController {
 
       if (control.isAvailable === false){
         Viewport.viewport.context.fillStyle = '#00000099'
-        Viewport.viewport.context.fillRect(tabPosition.x , tabPosition.y, 33 * scale, 36 * scale)
+        Viewport.viewport.context.fillRect(tabPosition.x, tabPosition.y, 33 * scale, 36 * scale)
       }
 
       
