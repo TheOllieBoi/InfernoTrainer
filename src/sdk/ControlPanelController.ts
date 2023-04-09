@@ -50,7 +50,7 @@ export class ControlPanelController {
   isUsingExternalUI = false;
 
   constructor () {
-
+``
     this.width = 33 * 7
     this.height = 36 * 2 + 275
 
@@ -317,7 +317,6 @@ export class ControlPanelController {
       const position = this.controlPosition(this.selectedControl);
       this.selectedControl.draw(this, position.x, position.y);
     }
-
 
     let selectedPosition: TabPosition = null
 
